@@ -1,0 +1,45 @@
+setcps (130/60/4)
+
+d1 $ sound "clubkick(7,8)"
+
+d3 $ every 3 (fast 2) $ sound "bskick(3,8)"
+-- # hpf 2000
+# gain 1.25
+
+d4 $ splice "12" "<4 8 2>" $ sound "church-bells"
+# hpf 3000
+
+d2 $ every 2 (striate "<4 8>") $ every 2 (jux rev)
+$ splice 8 10 $ sound "choir"
+# lpf (range 500 1000 sine)
+# speed "1 0.8 0.6"
+# xsdelay 1
+-- # gain 1.5
+
+hush
+
+
+d7 silence
+
+
+
+d7 $ layer [id, jux rev, slow 4] $ scramble 4 $ chunk 4 (|-| note 5) $ slow 2 $ every 3 (fast 2)
+$ n(scale "melodicMinor" "0 .. 5") # sound "sinosc"
+# octave "6 5"
+# gain (range 0.55 0.9 $ slow 2 sine)
+# sustain (range 0.5 2 sine)
+-- # gain 0.75
+
+d8 $ layer [id, jux rev, slow 4] $ scramble 4 $ slow 2 $ every 3 (fast 2)
+$ n(scale "aeolian" "0 .. 3") # sound "superfm"
+# octave "4 5"
+# gain 0.75
+# sustain 1.5
+
+d9
+$ striate "<4 8>" $ sound "flbass" # n "<d'min d'sus>"
+-- # octave "3"
+-- # gain 0.9
+# sustain 3
+
+hush
