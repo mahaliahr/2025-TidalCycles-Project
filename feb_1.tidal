@@ -1,0 +1,141 @@
+-- another remix of an oldie
+
+-- setcps 0.6
+
+hush
+
+-- $ striate 2 $ sometimes (jux rev)
+-- cmaj
+d9  $ layer [id, slow 2, jux rev] $ every 2 (slow 2) $ chunk 4 (|- note 5) $ arp "pinkyup" $ n "a'maj <a'min>"
+      # sound "tides"
+      # sustain (range 1 3 sine)
+      -- # pan rand
+      # gain 0.8
+      -- # octave "4 5 6"
+      # octave 3
+
+d2  $ fast 4 $ sometimes (jux rev) $ sometimes (slow 2) $ arp "pinkyup" $ n "a'min d'min"
+    # sound "sinosc"
+    # sustain 0.9
+    # room 0.25
+    # gain "0.3"
+    # octave "5 6"
+    # djf 0.8
+
+
+d2 silence
+
+d8    $ layer [id, jux rev] $ slow 6 $ every 2 (striate "2 4") $ chunk 4 (|- note "5 7") $ arp "pinkyup" $ n "a'maj a'min"
+      # sound "superfm"
+      # room 0.3
+      # pan rand
+      # distort (range 1 0.6 $ slow 2 sine)
+      # gain 0.95
+      # crush 7
+      -- # octave "4 5 6"
+      # octave "4 3 4"
+
+
+      hush
+
+d8 silence
+
+-- 2. spring x bop
+
+d8  $ chunk 4 (|- note 5) $ sometimes (jux rev) $ arp "pinkyup" $ n "a'min <c'maj d'min>"
+    # sound "superfm"
+    # room 0.3
+    # pan rand
+    # gain 0.6
+    # octave "5 4"
+    -- # octave 4
+    -- # clouds 0.1 0.5 0.05 0.1
+    -- # cloudsblend 1 0.2 0.33 0.8
+    -- # cloudssize 0.5
+    -- # cloudsfreeze 0
+
+
+    unsolo 8
+
+
+d8 silence
+
+d9  $ chunk 4 (|- note "5 10")$ jux rev $ arp "<pinkyup> " $ n "f'maj <c'maj ~ a'min>"
+    # sound "tides"
+    # sustain (range 1 3 sine)
+    # room 0.3
+    # gain 0.5
+    # sz 0.9
+
+
+
+d10 $ chunk 4 (|- note 5) $ jux rev $ arp "pinkyup" $ n "f'maj <c'maj ~ a'min>"
+    # sound "tides"
+    # sustain (range 1 3 sine)
+    # distort (range 0.1 0.3 sine)
+    # room 0.3
+    # pan (range rand 2 sine)
+    # gain (range 0.65 0.4 sine)
+    # sz 0.9
+    # octave "4 5"
+    # djf 0.4
+
+-- $ sometimes (jux rev)
+-- d2  $ sometimes (jux rev) $ sometimes (slow 2) $ arp "pinkyup" $ n "a'min c'maj f'maj <a'min d'min>"
+--     # sound "sinosc"
+--     # sustain 0.7
+--     # room 0.25
+--     # gain "0.75"
+--     # octave "5 6"
+--     # djf 0.8
+
+
+
+mutelist = mapM_ mute
+--
+
+mutelist [1,4,6,5,3]
+--
+
+unmutelist = mapM_ unmute
+--
+
+unmutelist [2, 10]
+
+d2 silence
+
+-- percussion
+
+d1  $ stack [iter "4" $ n "0 0 0 [0 1 3 4 5 6]/3" # sound "gretsch",
+      sound "bskick*16"]
+    # gain (range 0.55 0.85 $ sine)
+    # distort 0.15
+
+d4  $ fast 2 $ sometimes (jux rev) $ someCycles (slow 2) $ n "[~ <2 2*2> ~ 3*4]" # sound "<soskick>"
+    -- # gain (range 1 1.15 sine)
+    # djf 0.5
+
+    d4 silence
+
+
+d6 $ fast 2 $ every 2 (jux rev) $ n "[1 2 3 4]*2" # "<<hh27 linnhats>>"
+
+
+d5 $ every 4 (fast 2) $ splice 4 4 $ sound "newdrums"
+# gain 1.15
+
+d7 $ every 2 rev $ every 4 (jux rev) $ splice 2 "<4 6 8>" $ sound "amen_breaks"
+-- # djf 0.5
+
+d3 $ splice 2 8 $ sound "breaksss:5"
+-- # djf 0.5
+# gain 1.2
+
+d3 $ sound "clubkick*16"
+# gain cosine
+# distort 0.15
+
+d2 $ someCycles (striate 2) $ slice 8 "<4 6> 4 8" $ jux rev $ sound "airport:8"
+# gain 1.15
+# distort (range 0.1 0.3 sine)
+-- # speed "0.5 0.8 1"

@@ -1,0 +1,98 @@
+-- testing more with mi-UGens
+
+-- d1 $ someCycles (jux rev) $ n (toScale [0,2,3,5,7,8,10] "0 1 2 3 4 5 6 7") # sound "superfm"
+-- # gain 0.85
+--
+-- d2 $ n (toScale [0,1,3,6,7,8] "0 1 2 3 4 5 6 7") # sound "flbass"
+--
+
+hush
+
+--
+-- d7 $ layer [id, jux rev, slow 4] $ scramble 4 $ slow 2 $ every 3 (fast 2)
+--   $ n(scale "hexSus" "0 .. 7") # sound "plaits"
+--   # gain 0.8
+-- # clouds 0.1 0.5 0.05 0.1
+-- # cloudsblend 1 0.2 0.33 0.8
+--
+-- d2  $ s "bass1:1"
+--     # mu 5
+--     # gain 0.8
+
+//////
+
+-- remixing an oldie
+
+-- Sludge
+
+setcps 0.6
+-------
+
+d1 $ sometimes (fast 2) $ jux (rev) $ n "0 <0 1 2> [3, 4]" # sound "flbass"
+# room 0.4
+# gain "0.8"
+# legato 5
+# octave "4 5 4"
+# sz 0.9
+
+-- more of the same
+d2 $ qt $ someCycles (fast 2) $ jux (rev) $ n "0 <0 1 2> [3 4]" # sound "bass8"
+# legato 5
+# octave "5 6"
+# gain 0.7
+-- # speed "1 0.5 0.1"
+
+-- $ slice 2 "2 4" for transition
+d3 $ qt $ sometimes (fast 2) $ jux (rev) $ n "0 <0 1 2> [3 4]" # sound "bass8"
+# distort 0.02
+# legato 5
+# gain 0.75
+# octave "7"
+
+d6 $ n (arp "up" "c'min") # sound "bass_"
+# distort (range 0.02 0.5 sine)
+# sustain 1.1
+# gain 0.5
+# octave "3"
+
+///////
+
+d6 silence
+
+d4 $ stack [ every 4 (slow 2) $ sound "[808:1*6, 808bd(7, 12)]" # gain 1,
+sometimes (slow 2) $ jux (rev) $ n "3 2 [4*<4 4 6>]" # sound "print" # gain "0.8"]
+
+d5 $ every 3 (jux rev) $ sometimes (hurry 2) $ n "0 .. 5"
+# sound "[linnhats, <808sd 808oh>]"
+  # gain "[0.8 1]*8"
+
+d9 silence
+
+
+d6 $ sometimes (fast 2) $ every 3 (jux rev) $ n "0 0 1 3" # sound "sostoms"
+-- # gain "0.8"
+
+d7  $ n "<0 ~ 2 ~ [1*2 2 ~ 4]>" # sound "<clubkick bskick>"
+-- # gain 0.9
+
+-- d9 $ splice 8 "<[0 .. 3][4 ..7]>" $ "155bpm:16"
+
+d9 $ splice 8 "<[0 .. 3][4 ..7]>" $ "sk-breaks:20"
+------------
+
+d10 $ splice 8 "8" $ "yearn"
+
+
+-- add intensity with this
+
+d9 silence
+
+d8 $ n "1*12" # sound "clubkick:1"
+# gain "0.6 0.8"
+# crush (range 2 8 $ sine)
+# vowel "a e i"
+
+--------
+-- $ striate 8 when slow
+d9 $ splice "2 4 8" "0 .. 5" $ sound "pad:2"
+# gain "0.6 0.8"
