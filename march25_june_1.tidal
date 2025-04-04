@@ -1,0 +1,43 @@
+-- 4 - 10
+
+
+-- bring back in @ end
+d5
+$ n "[0 2]*4[0 0,5 5]*2" # sound "soskick"
+# gain 1.05
+
+d5 silence
+
+d5
+$ n "[[0 2]*4 [0 2]*4]" # sound "soskick"
+# gain 1.05
+# crush (range 7 4 sine)
+
+d4 silence
+
+
+
+--
+d4 $ spread($)[striate 2, jux rev,(# speed "0.8")]
+$ n "[~ <2 2*2> ~ <3*4 2*8>]"
+# sound "supersnare hc"
+# room 0.2
+# gain "0.75"
+
+--hh breaks > scramble?
+d3 $ splice 10 "0..9" $ sound "break:17"
+# gain "1.25 1.35"
+# lpf "3000"
+
+-- d4 $ every 2 (scramble 8) $ n "[0 2]*4[0 0,5 5]*2" # sound "gabor"
+
+
+d3 silence
+
+
+
+-- -- phase 2 >> $ sound "house:5
+-- -- $ every 2 (# crush "4 5 6") ----
+-- d4 $ sound "house(<5 7 9>, 16)" # pan "1 1.2"
+-- # gain "1.2"
+-- -- # squiz "0..2"

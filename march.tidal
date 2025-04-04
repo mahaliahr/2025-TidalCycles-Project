@@ -1,79 +1,136 @@
-d1 $ sometimes (jux rev) $ loopAt 2 $ chop 16 $ sound "amen_breaks:6"
+d10 $ rarely (jux rev) $ loopAt 2 $ chop 16 $ sound "amen_breaks:6"
 # lpf 500
 # gain 1.15
 
-d11 $ loopAt 2 $ chop 16 $ sound "amen_breaks:11"
-# lpf 1000
-# gain 1.15
+d10 silence
 
-d2 silence
+d13 $ stack [
+splice 2 10 $ every 3 (jux rev) $ sound "breaksss:14",
+splice 2 10 $ every 3 (jux rev) $ every 2 (scramble 4) $ sound "amen_breaks:28"]
+# gain "0.7"
+# lpf 3000
 
-d9 $ brak $ every 2 (jux rev) $ n "[[1 2] 2 [3 2] 4][1 2 3 4]" # sound "[house kick, kicklinn]"
--- # gain 1.1
-# lpf 10000
-
--- d7 $ every 4 rev $ every 3 (# pan " 1 1.2") $ sound "future(7,16)"
-
-d2 $ off "0.25 0.5" (fast 2) $ off 0.75 (jux rev) $ stack [ sound "cpu2(3,8)" # gain 1.1,
-sound "kick(7,8)" # gain 0.5]
-
-d8 $ chop 16 $ sound "cyborg:2"
-
--- $ stripe 4
-d4 $ palindrome $ n (scale "chromatic" "0 .. <7 15>") # sound "rash"
--- # octave 7
-# gain 1.1
-# pan sine
-
-d3 silence
-
-d5 $ fast 2 $ every 4 (# speed 1.2) $ chop "2 4" $ slice 8 4 $ sound "yearn"
-# lpf 500
-# gain 1.1
--- # speed 1.2
+-- d3 $ stack [ splice 2 8 $ sound "breaksss:6",
+-- n "[0 2]*4[0 0,5 5]*2" # sound "soskick"]
+-- -- # gain 1.1
+-- -- # lpf 3000
+-- # gain (range 0.6 0.85 sine)
+-- # gain 0.4
 
 
 
-d3 $ striate 2 $ fast 2
--- $ every 2 (slow 4)
-$ sound "[vox-slice:100 vox-slice:10, vox-slice:101]*2 [vox-slice:102, vox-slice:109 vox-slice:95]"
-# lpf 1000
-# room 0.5
-# sz 0.95
-# gain (range 0.7 0.65 sine)
-# distort (range 0.2 1 $ slow 2 sine)
--- # speed "0.5"
--- # speed "2 3 2"
+-- d13 $ splice 2 10 $ every 3 (jux rev)
+-- $ sound "breaksss:14"
+-- # gain "1.4"
+-- -- # squiz "0..2"
+--
+-- d15 $ splice 2 10 $ every 3 (jux rev) $ every 2 (scramble 4)
+-- $ sound "amen_breaks:28"
+-- -- # gain "1.4 1.5"
+-- -- # squiz "0..2"
 
-d3 silence
 
--- d4
--- $ striate "4"
--- $ sound "[vox-slice:100 vox-slice:10, vox-slice:101]*2 [vox-slice:102, vox-slice:109 vox-slice:95]"
--- # djf 0.3
--- -- # room 0.5
--- -- # sz 0.95
--- # gain (range 0.9 0.65 sine)
--- -- # speed "0.5"
--- # speed "2 3 2"
-
-d4
-$ sound "[vox-slice:100 vox-slice:10, vox-slice:101]*2 [vox-slice:102, vox-slice:109 vox-slice:95]"
-# djf 0.3
--- # room 0.5
--- # sz 0.95
-# gain (range 0.8 0.65 sine)
-# speed "0.5"
--- # speed "2 3 2"
-
-d15 $ layer [id, slow 2, jux rev] $ striate "<4 2>" $ n "0 .. 3"
-# sound "superfm"
-# gain "1.1 1.3"
-# octave "3 2"
 
 
 d4 silence
 
+hush
+
+-- d12 $ loopAt 2 $ chop 16 $ sound "amen_breaks:11"
+-- # lpf 1000
+-- # gain 1.15
+
+d11 silence
+
+-- d13
+xfadeIn 13 2 $ every 4 rev
+$ sound "jungbass:1(7,16)"
+# gain 1.3
+
+
+d9 $ stack [every 2 (jux rev) $ sometimes (scramble 2) $ n "[[1 2] 2 [3 2] 4][1 2 3 4]" # sound "[house bassdm, kicklinn]",
+n "[[1 2] 2 [3 2] 4]*2" # sound "[hi,lo]"]
+-- # gain 1.1
+# lpf 3000
+
+-- d7 $ every 4 rev $ every 3 (# pan " 1 1.2") $ sound "future(7,16)"
+
+d2 $ off "0.25 0.5" (fast "2") $ off 0.75 (jux rev) $ stack [ sound "cpu2(3,8)" # gain 1.1,
+sound "kick(7,8)" # gain 0.5]
+
+-- loopAt
+d8 $ chop 16 $ sound "cyborg:2"
+# gain 1.2
+
+d4 silence
+
+-- $ layer w' flbass?
+d4 $ palindrome $ n (scale "chromatic" "0 .. <7 15>") # sound "rash"
+-- # octave 7
+# gain 1
+# pan sine
+
+d16 silence
+
+unsolo 5
+
+d11
+$ splice 8 8
+-- $ chop 4 $ loopAt 2 -- 4 slow end
+$ sound "<newdrums>"
+# gain 1.2
+-- # lpf 100 -- 4 slow end
+
+
+
+/////// melody
+
+-- cs80lead / superfm
+d16 $ layer [id, slow 2, jux rev] $ striate "<4 2>" $ n "0 .. 3"
+# sound "super808"
+# sustain 1.2
+-- # gain "1.1 1.3"
+# gain 1
+# octave "3 2"
+
+d16 silence
+
+-- cs80lead sinosc braids
+d15 $ layer [id, slow 2, jux rev] $ striate 2 $ chunk 4 (|-| note "<5 10>")
+$ arp "<thumbup updown>" $ n "g'min" + up "0 <5 7>"
+# sound "sinosc"
+# gain "1.1 1.2"
+# sustain 1
+# gain 0.7
+-- # octave "4"
+-- # octave "3 2"
+
+hush
+
+
+d14 $ layer [id, slow 2, jux rev] $ striate 2 $ chunk 4 (|-| note "<5 10>")
+$ arp "<thumbup updown>" $ n "g'min" + up "0 <5 7>"
+# sound "supersaw"
+# gain "1.1 1.3"
+# sustain 1.2
+# gain 0.95
+-- # lpf 2000
+# djf 0.3
+# octave "6"
+-- # octave "3 2"
+
+d14 silence
+
+-- prometheus, layer + hurry /// layer with octave? try
+d1 $ layer [id, hurry 2] $ off "0.25" (# sustain "<1.1 2>")$ jux rev
+$ chunk 4 (fast 2 . (|- n 12)) $ off 0.25 (|+ "7")
+$ n (scale "hexSus" "0 .. <7>") # sound "rhodes"
+# gain (range 0.95 0.85 sine)
+# lpf 700
+# lpq (range 0.05 0.2 sine)
+-- # gain 0.8
+
+d1 silence
 
 
 

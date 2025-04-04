@@ -1,0 +1,4 @@
+d8 $ off 0.25 (striate 2) $ rarely (layer[id, jux rev,(# speed 0.2)]) $ splice "12" "<8 12> 16" $ sound "vox-general"
+# speed "0.55"
+-- # gain (range 0.95 1.2 sine)
+# gain 1.35

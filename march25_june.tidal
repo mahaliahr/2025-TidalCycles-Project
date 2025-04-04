@@ -1,0 +1,75 @@
+setcps 0.6
+
+d2 silence
+
+-- start with slice 8   //  chop or stritate?
+d1 $ stack [ fast 2 $ off "0.25"(# legato 2) $ splice "<8 12 16>" 8 $ sound "choir:2",
+striate "2 4" $ chop 4 $ sound "pad:5"]
+# speed 0.5
+# lpf 500
+# scram (range 0.01 0.03 sine)
+-- # gain (range 0.95 1.15 sine)
+# gain 0.8
+
+
+-- start with slice 8   //  chop or stritate?
+d2 $ splice "<6 8>" 8 $ striate 4 $ sound "choir"
+# speed 0.5
+-- # gain (range 0.95 1.15 sine)
+# gain 0.8
+
+
+-- phase 2
+d3 $ striate "2 4" $ chop 4 $ sound "ade"
+-- # crush 5
+# gain (range 0.75 0.8 sine)
+-- # gain 0.85
+
+-- get different vox!!!!!!!
+d6
+$ qt $ every 2 (slow 2) $ every 2 (jux rev) $ every 2 (scramble 2)
+$ every 4 (0.25 <~) $ n "[84..~ <87 90>]94" # sound "vox-slice"
+# lpf 1000
+# room 0.5
+# sz 0.95
+-- # distort (range 0.01 0.3 $ slow 2 sine)
+# gain 0.85
+# speed "0.9"
+-- # speed "2 3 2"
+
+d6 silence
+
+hush
+
+
+-- melody leads into phase 3
+d15 $ qt $ chunk 4 (|+| note "5 7") $ sometimes (jux rev) $ n ("c'm[0 2*2 5<2 5 0 7>]")
+# sound "[flbass, superfm]"
+# octave 5
+# gain "0.75"
+-- # legato 2
+
+d13 $ chunk 4 (|+| note "5 7") $ sometimes (jux rev) $ n ("c'm[0 2*2 5<2 5 0 7>]")
+# sound "rash"
+# octave "5 <6>"
+# gain (range 0.95 1 sine)
+
+-- louder into phase 3
+d12 $ striate 4 $ sometimes (jux rev) $ n "c'm7*4"
+# sound "flbass"
+# legato 2
+-- # gain 0.65
+# octave "4"
+
+
+d15 silence
+
+-- d11 $ fast 2 $ splice 4 4 $ sometimes (striate 2) $ sometimes (jux rev)
+-- $ sound "80s-synth:2"
+-- # legato 2
+-- # lpf (range 500 1000 $ slow 4 sine)
+-- -- # lpq (range 0.1 0.8 $ slow 8 sine)
+-- # gain "1"
+-- -- # octave "4"
+
+hush
