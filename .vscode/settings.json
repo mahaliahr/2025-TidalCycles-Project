@@ -1,0 +1,8 @@
+{
+    "workbench.colorTheme": "Monokai",
+    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "workbench.preferredHighContrastLightColorTheme": "Default Dark+",
+    "workbench.preferredHighContrastColorTheme": "Default Dark+",
+    "workbench.editor.decorations.colors": true,
+    "workbench.colorCustomizations": {}
+}

@@ -1,25 +1,35 @@
 setcps (130/60/4)
 
-d2 silence
+hush
 
--- d1 $ striate "2 4" $ chop 4 $ sound "pad:5"
--- # gain 0.8
-
-
-d1 $ stack [ fast 2 $ off "0.25"(# legato 2) $ splice "<8 12 16>" 8 $ sound "choir:2",
-striate "2 4" $ chop 4 $ sound "pad:5"]
-# speed 0.5
+-- 0.6
+d1 $ striate "2 4" $ chop 4 $ sound "pad:5"
+# speed 0.6
 # lpf 500
 # scram (range 0.01 0.03 sine)
 -- # gain (range 0.95 1.15 sine)
-# gain 0.8
+# gain 0.75
+
+-- d1 $ stack [
+--   off 0.25 (fast 2) $ splice "<8 12 16>" 8 $ sound "vox-general",
+--   striate "2 4" $ chop 4 $ sound "pad:5" # gain 0.9 # speed 0.5
+-- ]
+-- -- # lpf 500
+-- # scram (range 0.01 0.03 sine)
+-- -- -- # gain (range 0.95 1.15 sine)
+-- -- -- # gain 0.8
 
 
--- start with slice 8   //  chop or stritate?
-d2 $ splice "<6 8>" 8 $ chop 12 $ loopAt 4 $ sound "orchestra"
+-- layer
+d2 $ layer [id, slow 2, jux rev] $ splice "<6 8>" 8 $ chop 12 $ loopAt 4 $ sound "orchestra"
 # speed 0.9
 # gain (range 0.95 1.2 sine)
--- # gain 0.8
+# gain 0.8
+-- # freeze "1"
+-- # smear (range 0 0.5 $ slow 2 sine)
+
+d2 silence
+
 
 -- d3 $ stack[ striate "2 <4>" $ chop 4 $ sound "ade:5" # gain 1.2,
 -- striate "4" $ chop 4 $ sound "pad:5" # speed 0.3 # gain 0.6]
@@ -31,12 +41,12 @@ d6 silence
 
 -- get different vox!!!!!!!
 d6
-$ qt $ every 2 (slow 2) $ every 2 (jux rev) $ every 2 (striate 2) $ every 2 (scramble 2)
+$ layer [id, off "0.5 0.75" (rev)] $ qt $ every 2 (slow 2) $ every 2 (jux rev) $ every 2 (striate 2) $ every 2 (scramble 2)
 $ every 4 (0.25 <~) $ n "[105..~ <32 121>]112" # sound "vox-slice"
 # lpf 1000
 # room 0.5
 # sz 0.95
--- # distort (range 0.01 0.3 $ slow 2 sine)
+# distort (range 0.01 0.1 $ slow 2 sine)
 # gain 0.85
 # speed "1.25"
 -- # speed "2 3 2"
@@ -46,11 +56,11 @@ d12 silence
 hush
 
 
--- louder into phase 3
-d12 $ striate 4 $ sometimes (jux rev) $ n "c'm7*4"
+--
+d12 $ striate 4 $ sometimes (jux rev) $ n "e'm7*4"
 # sound "flbass"
 # legato 2
--- # gain 0.65
+# gain 0.85
 # octave "4"
 
 
