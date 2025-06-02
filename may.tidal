@@ -1,0 +1,23 @@
+euclid rhythms
+mini-notation
+splicing
+
+hush
+
+d2 $ stack [sound "bass0 <club clubkick>(<3 5>,8)",
+n "2 2 0 <3 [4*2 ~]>" # sound "cpu2"]
+
+d2 silence
+
+
+d3 $ splice 8 "1 2 3 4" $ sound "155bpm:3"
+-- # gain 1.1
+
+d7 $ rarely (# crush "<2 3>") $ fast 2 $ every 2 (jux rev) $ sound "<amencutup*8>" # n (irand 8)
+# gain (range 0.95 1.2 sine)
+-- # gain 1.1
+# speed "1 1.2 1"
+-- # gain 0.6
+
+d5 $ fast 2 $ splice 18 "<[0 1 2 4] [6 8 9 10]>" $ sound "ai-voice:5"
+# gain 1.2
