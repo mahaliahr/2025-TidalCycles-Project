@@ -1,0 +1,36 @@
+a.show()
+
+speed = 0.5
+
+shape(()=>Math.sin(time*1)+8,0,.5)
+.repeat(()=>a.fft[0]*50, ()=>Math.sin(time*1)+5, 50,10)
+.scale(()=>a.fft[0]*2)
+.scrollY(0.5, 0.1)
+.rotate(({time}) => time%360*0.05)
+.invert()
+.out(o0)
+
+osc(20, .1, 1)
+.scale(()=>Math.sin(time*1)+2.5)
+.kaleid(2)
+.modulatePixelate(o1,50)
+.rotate(({time}) => time%360*0.5)
+.modulate(noise(()=>Math.sin(time*0.5)+1.5),.3)
+.color(0,1,0.1)
+.hue(.4)
+.hue(()=>a.fft[0]*.2)
+.modulate(o0)
+.out(o1)
+
+osc(10, .1, 1)
+.scale(()=>Math.sin(time*1)+2.5)
+// .kaleid(2)
+.modulate(noise(()=>Math.sin(time*5)+1.5))
+.rotate(({time}) => time%360*0.5)
+.modulate(noise(()=>Math.sin(time*0.5)+1.5),.3)
+.color(()=>Math.sin(time*0.3),1,0.1)
+.hue(.4).hue(()=>a.fft[0]*.2)
+.modulate(o0)
+.out(o2)
+
+render()
