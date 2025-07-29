@@ -64,7 +64,7 @@ do
   d8 silence
   d10 silence
 
-d5 silence
+d3 silence
 
 -- bring back, but light // # hpf 2500
 d8 -- $ every4 (# distort "<2 3 4>")

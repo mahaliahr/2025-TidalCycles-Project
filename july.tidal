@@ -1,0 +1,41 @@
+d1 $ slice 8 "0..8" $ sound "kingston"
+# gain (range 0.4 0.8 sine)
+-- # speed 1.2
+-- # speed 0.5
+-- # djf 0.7
+-- # xsdelay 0.1
+-- # pan (range 0.1 1.5 $ slow 2 sine)
+
+d1 silence
+
+d2 $ splice 60 "<[0 1 2 4 5] [6 8 9 10 11]>"
+ $ sound "kingston"
+ # gain 1.2
+-- # speed 1.2
+-- # speed 0.5
+-- # djf 0.7
+-- # xsdelay 0.1
+-- # pan (range 0.1 1.5 $ slow 2 sine)
+
+
+edit the file (shorten)
+
+hush
+
+d12
+$ qt $ every 4 (rev)
+$ sound "<jungbass(3,8) jungbass:1*2>"
+# gain 1.1
+
+d3 $ fast 2
+$ sound "house:3(7,8)" # pan "1 1.2 2 0.5"
+# gain "0.9"
+
+d4
+-- $ striate "2 4" $ chop 4
+$ sound "pad:4"
+# speed 0.5
+-- # lpf 500
+# scram (range 0.01 0.03 sine)
+-- # gain (range 0.95 1.15 sine)
+# gain 0.8

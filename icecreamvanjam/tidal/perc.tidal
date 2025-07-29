@@ -7,7 +7,7 @@ $ stack [
   sound "ade:1*3 ade:9" # speed 0.25 # gain 0.8,
   n "0*4 1*<4 8>" # sound "super808" # gain 0.45,
   n "0*<4 2 8>  1*<4 8>" # sound "<popkick oc>" # gain 0.7]
--- # gain 0.65
+# gain 0.65
 
 unsolo 3
 
@@ -16,7 +16,8 @@ d3 silence
 
 
 d11 $ sometimes (jux rev) $ splice 4 "0 1 2 3 4 <2 3 1> 4 3"
-$ sound "dist <dist:11 dist:7>" # n (irand 8)
+$ sound "dist <dist:11 dist:7>"
+-- # n (irand 8)
 -- # gain "1 0.9 1"
 # speed "<0.5>"
 # djf 0.5
@@ -24,7 +25,7 @@ $ sound "dist <dist:11 dist:7>" # n (irand 8)
 # gain 0.85
 
 d12
-$ every 4 (rev)
+$ qt $ every 4 (rev)
 $ sound "jungbass(3,8) jungbass:1*2"
 # gain 1.1
 
@@ -34,11 +35,9 @@ $ sound "jungbass:1(9,16)"
 # gain 1.15
 # distort 0.02
 
-
-
 -- $ every 2 (# crush "4 5 6")
 d13 $ every 2 (# crush "4 5 6")
-$ sound "house(<5 7 9>, 16)" # pan "1 1.2"
+$ sound "house(<5 7 9>, 16)" # pan "1 1.2 2 0.5"
 # gain "0.9"
 # squiz "0..2"
 
@@ -55,7 +54,7 @@ $ sound "breaksss:14"
 -- # squiz "0..2"
 
 
-d11 silence
+d12 silence
 
 d11
 $ splice 8 8
