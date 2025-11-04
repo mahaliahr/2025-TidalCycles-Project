@@ -1,0 +1,13 @@
+d2 $ chunk 4 (fast 2 . (|+ n 12)) $ struct (iter 4 "t(7,12)")
+  $ n (scale "harmonicMinor" "0 .. 7") # sound "tides"
+
+d1 $ chunk 4 (fast 2 . (|+ n 12)) $ struct ("t(5,12)")
+  $ n (scale "<harmonicMinor hexPhrygian>" "0 .. <7 12>") # sound "omi"
+  # gain 1.2
+  -- # legato (range 0.2 1 sine)
+
+d1 silence
+
+d3 $ sometimes (striate 4 . jux rev) $ n (scale "minPent" "0 .. <7>") # sound "supervibe"
+  # gain 0.9
+  # legato (range 0.2 1.5 sine)
