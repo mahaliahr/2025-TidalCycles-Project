@@ -1,13 +1,130 @@
-d2 $ chunk 4 (fast 2 . (|+ n 12)) $ struct (iter 4 "t(7,12)")
-  $ n (scale "harmonicMinor" "0 .. 7") # sound "tides"
+-- d2 $ chunk 4 (fast 2 . (|+ n 12)) $ struct (iter 4 "t(7,12)")
+--   $ n (scale "harmonicMinor" "0 .. 7") # sound "tides"
+--
+-- d1 $ chunk 4 (fast 2 . (|+ n 12)) $ struct ("t(5,12)")
+--   $ n (scale "<harmonicMinor hexPhrygian>" "0 .. <7 12>") # sound "omi"
+--   # gain 1.2
+--   -- # legato (range 0.2 1 sine)
+--
+-- d3 silence
+--
+-- d7 $ sometimes (striate 4 . jux rev) $ n (scale "minPent" "0 .. <7>") # sound "supervibe"
+--   -- # gain 0.9
+--   # legato (range 0.2 1.5 sine)
+--   # djf 0.8
 
-d1 $ chunk 4 (fast 2 . (|+ n 12)) $ struct ("t(5,12)")
-  $ n (scale "<harmonicMinor hexPhrygian>" "0 .. <7 12>") # sound "omi"
-  # gain 1.2
-  -- # legato (range 0.2 1 sine)
+d1 $ sometimes (fast 2) $ jux (rev) $ n (scale "minPent" "0 <0 1 2> [3, 4] 1") # sound "flbass"
+# room 0.4
+# gain "0.8"
+# legato 5
+# octave "4 5 4"
+# sz 0.9
 
-d1 silence
+unNote solo 1
 
-d3 $ sometimes (striate 4 . jux rev) $ n (scale "minPent" "0 .. <7>") # sound "supervibe"
-  # gain 0.9
+-- more of the same
+d2 $ qt $ someCycles (fast 2) $ jux (rev) $ n "0 <0 1 2> [3 4] 1" # sound "bass8"
+# legato 5
+# octave "5 6"
+-- # gain 0.7
+-- # speed "1 0.5 0.1"
+
+-- $ slice 2 "2 4" for transition
+d3 $ qt $ sometimes (fast 2) $ jux (rev) $ n (scale "melodicMinorDesc" "0 <0 1 2> [3 4] 1*2") # sound "bass8"
+# distort 0.02
+# legato 5
+# gain 0.75
+# octave "7"
+
+
+d6
+$ sometimes (striate 2 . jux rev)
+-- $ chunk 4 (fast 2 . (|+ n 12))
+$ struct (rarely inv "t(3,8)")
+$ n (scale "hexSus" "[0 1 2] 3 4 5 6") # sound "sinosc"
+  # gain 0.8
   # legato (range 0.2 1.5 sine)
+  # djf 0.3
+
+d12 $ every 2 (0.25 <~) $ sometimes(jux rev) $ striate 2 $ n (scale "minPent" "0 2 5 7")
+# sound "superfm"
+# distort 0.2 -- MORE
+# gain 0.95
+# octave "3 2"
+# legato 2
+
+-- d1 $ chop 2 $ loopAt 2 $ sound "bsbass:5"
+
+d1 $ chop 2 $ loopAt 2 $ stack [
+sound "bsbass:1",
+sound "bsbass:5"
+]
+
+-- d2 $ chop 2 $ loopAt 2 $ sound "bsbass:1"
+
+d2 $ sometimes (hurry 2) $ chop 2 $ loopAt 2 $ sound "cyborg:10"
+
+d7 $ splice 10 "0..9" $ sound "break:17" -- ?
+
+
+-- d6 $ sometimes (jux rev) $ fast 2 $ n "0 0 <1 1*2> [0 1 3 4 5 6]/3"
+-- # sound "<click cp>"
+-- # gain 1
+
+-- $ fast 2 . degradeBy "0.25"
+
+d3  $ sound "clubkick*4 gretsch(3,8)" # n (irand 4)
+# gain 1.1
+-- # gain cosine
+
+d12 silence
+
+d4 $ chop 4 $ loopAt 4 $ sound "yearn"
+# gain 0.8
+
+# freeze 1 -- !!!!!!
+
+d5 $ loopAt 4 $ splice 8 "2 3 5 1 3 2 4 0" $ sound "rough-brass:1"
+# speed 0.5
+# gain (range 0.6 1 sine)
+
+
+hush
+
+
+d5 $ jux rev $ loopAt 4 $ chop "32" $ sound "orchestra"
+# gain 1
+# lpf 400
+# speed 0.6
+
+
+d6 $ jux rev $ loopAt 4 $ chop "16 32" $ sound "orchestra"
+# hpf 1000
+# speed 0.2
+# gain 0.4
+
+
+d7 $ sometimes (jux rev) $ slice "20" "0 .. [5 10]" $ sound "orchestra"
+# gain (range 0.4 1.05 sine)
+# speed 1.2
+# gain 0.5
+
+do
+d1 silence
+d2 silence
+
+-- d6 $ fast 2 $ chop 4 $ loopAt 2 $ sound "sk-breaks:3"
+-- # gain 0.9
+
+d9 $ sometimes (striate 2) $ sound "vox-slice:2*2 vox-slice*2 vox-slice:20" # n (irand 50)
+-- # gain 1.2
+# djf 0.9
+-- # hpf (range 1000 6000 sine)
+
+d2 $ off "0.25 0.5" (fast "2") $ off 0.75 (jux rev)
+$ stack [sound "cpu2(3,8)" # gain 1.1,
+sound "kick(7,8)" # gain 0.5]
+
+d12 silence
+
+hush

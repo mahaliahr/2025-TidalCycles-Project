@@ -1,3 +1,8 @@
+setcps  0.6
+
+setcps (130/60/4)
+
+
 d1 $ chop "6" $ loopAt 10 $ sound "kingston"
 -- # gain (range 0.4 0.8 sine)
 -- # speed 1.2
@@ -68,10 +73,12 @@ $ every 3 (# pan "1 1.2 0.8")
 $ sound "<clubkick bass2>(7,16)"
 # gain 1.15
 
-d7 $ fast 2 $ every 2 (jux rev) $ sound "<amencutup*8>"
+d6 $ fast 2 $ every 2 (jux rev) $ sound "<amencutup*8>"
 # n (irand 8)
 # gain (range 0.95 1.2 sine)
 # gain 1.1
 # speed "1 1.2 1"
 
-d7 silence
+d4 silence
+
+hush
