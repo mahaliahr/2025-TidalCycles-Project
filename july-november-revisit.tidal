@@ -1,4 +1,4 @@
-setcps  0.6
+setcps 0.6
 
 setcps (130/60/4)
 
@@ -41,7 +41,7 @@ $ qt $ every 4 (rev)
 $ sound "<jungbass(3,8) jungbass:1*2>"
 # gain 1.1
 
-d3 $ fast 2
+d4 $ fast 2
 $ sound "house:3(7,8)" # pan "1 1.2 2 0.5"
 # gain "0.9"
 
@@ -61,17 +61,17 @@ $ sound "pad:4"
 -- # gain 0.8
 
 -- $ every 2 (scramble 4) >> sk-breaks:6 breaksss:6
-d10 $ every 2 (scramble 4) $ splice 8 "0 .. 7"
-$ sound "sk-breaks:3 <sk-breaks:6 breaksss:6>*2"
-# gain 1.1
--- # lpf (range 3000 1000 sine)
+d10 $ every 2 (scramble 4 . fast 2) $ splice 8 "0 .. 7"
+$ sound "sk-breaks:3 <sk-breaks:6 breaksss>*2"
+-- # gain 1.1
+# lpf (range 3000 1000 sine)
 -- # squiz "0..2"
 
 -- ???
-d9 $ every 4 rev
+d3 $ every 4 rev
 $ every 3 (# pan "1 1.2 0.8")
 $ sound "<clubkick bass2>(7,16)"
-# gain 1.15
+-- # gain 1.15
 
 d6 $ fast 2 $ every 2 (jux rev) $ sound "<amencutup*8>"
 # n (irand 8)
@@ -79,6 +79,6 @@ d6 $ fast 2 $ every 2 (jux rev) $ sound "<amencutup*8>"
 # gain 1.1
 # speed "1 1.2 1"
 
-d4 silence
+d10 silence
 
 hush

@@ -2,16 +2,28 @@ setcps 0.6
 
 hush
 
-d3 $ sometimes (jux rev)
-$ stack [
-  sound "ade:1*3 ade:9" # speed 0.25 # gain 0.8,
-  n "0*4 1*<4 8>" # sound "super808" # gain 0.45,
-  n "0*<4 2 8>  1*<4 8>" # sound "<popkick oc>" # gain 0.7]
-# gain 0.65
+-- d3 $ sometimes (jux rev)
+-- $ stack [
+--   sound "ade:1*3 ade:9" # speed 0.25 # gain 0.8,
+--   n "0*4 1*<4 8>" # sound "super808" # gain 0.45,
+--   n "0*<4 2 8>  1*<4 8>" # sound "<popkick oc>" # gain 0.7]
+-- # gain 0.65
+--
+-- d3 $ sometimes (jux rev)
+-- $ stack [
+--   sound "ade:1*3 ade:9" # speed 0.25 # gain 0.8,
+--   n "0*4 1*<4 8>" # sound "909" # gain 0.45,
+--   n "0*<4 2 8>  1*<4 8>" # sound "808mt 808bd" # gain 0.8 # n (irand 8)]
+-- # gain 0.65
 
-unsolo 3
+d3 $ qt $ sometimes (jux rev) $ stack [
+sound "ade:1*3 ade:9" # gain "0.85" # speed 0.25 # gain 0.8,
+n "0*4 1*<4 8>" # sound "superclap" # gain 0.65]
+# gain 0.55
 
-d3 silence
+
+
+d11 silence
 
 
 
@@ -20,18 +32,22 @@ $ sound "dist <dist:11 dist:7>"
 -- # n (irand 8)
 -- # gain "1 0.9 1"
 # speed "<0.5>"
-# djf 0.5
+# djf (range 0.4 0.55 $ slow 4 sine)
 -- # lpf 3000
-# gain 0.85
+# gain 0.9
 
 d12
-$ qt $ every 4 (rev)
+$ mask "t t ~ t"
+$ fast 2 $ every 4 (rev)
 $ sound "jungbass(3,8) jungbass:1*2"
 # gain 1.1
 
-d12 $ every 4 rev
+unsolo 12
+
+d12
+$ every 4 rev
 $ every 3 (# pan "1 1.2 0.5")
-$ sound "jungbass:1(9,16)"
+$ sound "clubkick:1(9,16)"
 # gain 1.15
 # distort 0.02
 
@@ -48,20 +64,23 @@ d14 $ every 3 (fast 2) $ sound "<bassdm bskick>(3,8)" # n "0 .. 5"
 # hpf 1000
 
 
-d15 $ splice 2 10 $ every 3 (jux rev)
+d15 $ qt $ splice 2 10 $ every 3 (jux rev)
 $ sound "breaksss:14"
 # gain "1.1 1.15"
 -- # squiz "0..2"
 
 
-d12 silence
+d8 silence
 
+do
+d13 silence
+d14 silence
 d11
-$ splice 8 8
--- $ chop 4 $ loopAt 2 -- 4 slow end
-$ sound "<newdrums>"
--- # gain 1.2
--- # lpf 100 -- 4 slow end
+  $ fast 2 $ splice 8 8
+  -- $ chop 4 $ loopAt 2 -- 4 slow end
+  $ sound "<newdrums>"
+  -- # gain 1.2
+  -- # lpf 100 -- 4 slow end
 
 
 
@@ -82,4 +101,4 @@ d10 $ striate "2" $ sometimes (jux rev) $ n "c'm7*4"
 # sound "gtr"
 # sustain 3
 # gain "0.7"
-# octave "3 <3 4>"
+# octave "3 <3 4>" -- make higher for end

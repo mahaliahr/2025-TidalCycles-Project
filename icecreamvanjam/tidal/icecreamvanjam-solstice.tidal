@@ -37,7 +37,7 @@ $ sound "ice-cream"
 -- # speed (range 1.2 0.5 sine)
 # djf 0.7
 -- # speed 1.2
-# freeze 0
+-- # freeze 1
 
 freezes for transitions?
 
@@ -50,7 +50,7 @@ $ sound "tonal-bass"
 # gain "0.95"
 # gain "0.8"
 # lpf (range 1500 100 sine)
-# lpq 1
+-- # lpq 1
 # speed 1.2
 -- # gain "0.6"
 
@@ -71,7 +71,7 @@ d5 silence
 d6 silence
 d11 silence
 
-xfadeIn 4 8 $ rarely (jux rev)
+xfadeIn 4 16 $ rarely (jux rev)
 -- $ splice "35" "<[<0 1 2 3 4>*2][5 6 7]>" -- <<
 $ fast 4 $ splice "45" "<[<[10 11] 16*2 [12 13] 14*2>][8 9]>"
 -- $ loopAt 2 $ chop "32"
@@ -80,11 +80,14 @@ $ sound "ice-cream"
 # speed 0.8
 # djf 0.7
 # gain 1.1
-# freeze "1"
+-- # freeze "1"
+-- # gain 0.9
 
-d6 $ fast 2 $ every 2 (jux rev) $ sound "<amencutup*8>" # n (irand 8)
-# gain (range 0.95 1.2 sine)
--- # gain 1.1
-# speed "1 1.2 1"
+unsolo 4
+
+-- d6 $ fast 2 $ every 2 (jux rev) $ sound "<amencutup*8>" # n (irand 8)
+-- # gain (range 0.95 1.2 sine)
+-- -- # gain 1.1
+-- # speed "1 <1.2 1.4> 1"
 
 hush
